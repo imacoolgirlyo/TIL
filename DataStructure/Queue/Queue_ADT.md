@@ -23,4 +23,36 @@
 
 - Stack 의 경우 엘리먼트를 넣고(push) 빼는(pop) 동작이 모두 한 군데에서 이루어졌다면 Queue의 경우 한 쪽면(rear)에서는 무조건 Enqueue, 다른 한쪽(front)에서는 무조건 Dequeue만 이루어진다. 같은 곳 일 수 없음!
 
-- Stack 구조 사진 
+- Queue 구조 사진 
+
+### Aplications 
+
+- Queue는 어떤 자원을 공유해야하는 상황에서 한번에 하나씩만 요청을 처리할 수 있을 때 사용된다. 제일 먼저 들어온 요청을 제일 먼저 처리해야 한다. 
+- 네트워크에 연결되어 있는 프린터는 문서를 처리 할 때 Queue 로 동작되는데 프린터는 한번에 하나의 문서만 프린트 할 수 있다. 만약 프린터가 문서를 출력하고 있을 때 다른 문서의 출력 요청이 온다면 차례대로 queue에 쌓이면서 출력 순서를 정한다. 
+- 컴퓨터 안의 processor 또한 공유 되어야 하는 자원이다. processor는 한번에 하나의 프로그램 만 처리할 수 있다. 
+
+## Implemations of Queue 
+ Queue의  Enqueue, Dequeue, 첫번째 엘리먼트 값 확인하는 동작들은 Queue에 엘리먼트가 몇개가 있던지 간에 상관없이 constant time or O(1)으로 동작할 수 있어야한다. 
+
+ Queue는 1) Array 2) Linked Listsn두가지 형태로 구현이 가능하다. 
+
+### 1) List Implementation
+리스트의 마지막 인덱스에서 추가하고 삭제하는 것은 가능하지만 첫번째 인덱스에서 삽입 삭제는 효율적이지 않다. (다른 모든 엘리먼트가 한칸 씩 이동해야 하기 때문에)
+queue를 구현하기 위해서 파이썬에서는 양 쪽 end에서 append와 pop이 빠르도록 만들어놨다.
+
+```
+from collections import deque
+queue = deque(['Eric', 'John', 'Michael'])
+queue.append('Terry')
+queue.append('Graham')
+queue.popleft()
+'Eric'
+queue.popleft()
+'John'
+queue
+deque(['Michael','Terry', 'Graham'])
+
+```
+변수 front, tail 을 지정해서 만드는 방법은 ? 
+
+### 2) Linked list Implementation 
