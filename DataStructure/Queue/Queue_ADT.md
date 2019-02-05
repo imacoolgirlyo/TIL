@@ -37,7 +37,32 @@
  Queue는 1) Array 2) Linked Listsn두가지 형태로 구현이 가능하다. 
 
 ### 1) List Implementation
-리스트의 마지막 인덱스에서 추가하고 삭제하는 것은 가능하지만 첫번째 인덱스에서 삽입 삭제는 효율적이지 않다. (다른 모든 엘리먼트가 한칸 씩 이동해야 하기 때문에)
+
+파이썬에서 리스트로 스택을 구현하기는 쉽다. 한쪽 end에서만 삽입, 삭제가 이루어지기 때
+문에 O(1)으로 가능하다. 
+
+```
+stack = []
+stack.append(1)
+stack.append(2)
+stack.append(3)
+stack.pop() # 3
+
+```
+하지만 queue는 양쪽 엔드에서 데이터가 들어오고 (Enqueue) 나갈 수 있어야 한다. (Dequeue)
+list로 구현한다면 
+
+```
+queue = []
+queue.append(1)
+queue.append(2)
+queue.append(3)
+queue.pop(0) # 1
+queue.pop(0) # 2
+queue.pop(0) # 3
+```
+하지만 리스트의 첫번쨰 인덱스에서 값이 삭제된다면 리스트에 있는 모든 값들이 한칸 씩 앞으로 당겨져야 하기 때문에 결국 제일 앞의 값을 꺼내는데는 리스트의 크기만큼 시간이 소요된다 O(N)
+
 queue를 구현하기 위해서 파이썬에서는 양 쪽 end에서 append와 pop이 빠르도록 만들어놨다.
 
 ```
