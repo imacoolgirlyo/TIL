@@ -155,6 +155,7 @@ leo.sleep();
 새로운 함수를 만들고 this 키워드를 이용해서 속성들을 추가한다. 메소드들은 프로토타입에 할당된다. 새로운 객체를 만들기 위해서 new 키워드를 사용한다. 
 
 ```s
+// 얘를 이제 constructor 라고 부르게 됨 
 function Animal(name, energy){
     this.name = name;
     this.energy = energy;
@@ -189,12 +190,34 @@ var leo = new Animal('leo', 10);s
     > 디폴트로 `this` 는 글로벌 객체를 가리키고 있다. 브라우저에서의 this는 기본적으로 window 객체이다. 전역 객체 window를 만지는 일은 매우매우 안좋은 행동! 어플리케이션 어디에서든지 사용가능 하기 때문
 -  그 다음 해당 객체를 Animal function 에서 리턴하게 한다. 
 
+### ES6 
+- ES6 에서는 Class를 사용할 수 있음 
 
+```s
+class Animal {
+    constructor(name, energy){
+        this.name = name
+        this.energy = energy
+    }
+    eat(){
+        //
+    }
+    sleep(){
+        //
+    }
+}
 
+const leo = new Animal('Leo', 7)
+```
+- 함수는 프로토타입을 생성하지만, 함수 스스로가 프로토타입으로부터 값을 얻지는 못한다. 인스턴스를 생성하면 접근가능함 
+결국 prototype은 새로운 객체를 생성할 때 동일한 메소드를 공유하기 위해서 사용된다. 
  
-## Summary
-자바스크립트 개발자들은 객체를 만드는 위의 다양한 방법들을 알고 있어야 한다. 각각의 방법들은 장단점이 있기 때문에 코드의 사이즈와 퍼포먼스에 맞는 방법을 찾아 쓸 수 있어야 한다. 
 
 > 참고 
 - [Instantiation Patterns in JavaScript](https://medium.com/dailyjs/instantiation-patterns-in-javascript-8fdcf69e8f9b)
 - [A Beginner's Guide to JavaScript's Prototype](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)
+
+# 정리
+ - new를 사용해 만든 객체는 Animal function을 자신의 프로토타입으로 사용해서 만든 것임 
+
+
