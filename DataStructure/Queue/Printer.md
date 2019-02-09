@@ -26,3 +26,5 @@
             temp = (temp - 1 + len(priorities))% len(priorities)
 
 ```
+
+접근 방법은 맞았지만 조건을 세세하게 나누는 부분에서 부족하고, 파이썬 list 문법에도 익숙해지는 시간이 필요하다. 
