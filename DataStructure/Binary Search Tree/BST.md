@@ -114,3 +114,51 @@ def insertNode(self , currentNode , val): # val이 넣고자 하는 값
 
 > 참고 
 [이진탐색트리 (Binary Search Tree)](https://ratsgo.github.io/data%20structure&algorithm/2017/10/22/bst/)
+
+```c
+#include<iostream>
+using namespace std;
+struct Node {
+    int data;
+    struct Node*left;  // pointers to left node
+    struct Node*right;
+};
+
+// root에서 부터 값 확인 
+struct Node* Delete(struct Node*root , int data){
+    if(root === NULL ) return root;
+    else if(data < root->data) root->left = Delete(root->left ,data )
+    else (data > data-> data) root-> right = Delete(root -> right , data)
+    else // 값을 찾은 경우
+    {   
+        //Case 1 : No child
+        if(root -> left == NULL && root -> right == NULL ){
+            delete root;
+            root = NULL;
+            
+        }
+        // Case 2 : One child
+        else if(root->left == NULL){
+            struct Node * temp // current node의 주소값 저장하고 
+            root = root -> right;
+            delete temp; 
+            
+        }
+        else if(root ->right == NULL){
+            struct Node * temp // current node의 주소값 저장하고 
+            root = root -> left;
+            delete temp; 
+            
+        }
+        // Case 3 : 2 children
+        else {
+            struct Node* temp = FindMin(root -> right);
+            root -> data = temp -> data;
+            root -> right = Delete(root -> right, temp ->data);
+
+        }
+
+    }
+    return root
+}
+```
